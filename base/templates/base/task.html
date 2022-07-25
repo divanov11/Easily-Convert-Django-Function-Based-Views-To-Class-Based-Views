@@ -1,0 +1,12 @@
+<a href="{% url 'tasks' %}">Go Back</a>
+<small>Updated {{task.updated|timesince}} ago</small>
+<hr>
+
+<form method="POST" action="{% url 'task' task.id %}">
+    {% csrf_token %}
+    <textarea name="body">{{task.body}}</textarea>
+    <input type="submit" value="Save Changes" />
+</form>
+
+<hr>
+<a href="{% url 'delete' task.id %}">Delete Task</a>

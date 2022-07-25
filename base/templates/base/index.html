@@ -1,0 +1,15 @@
+<form method="POST" action="/">
+    {% csrf_token %}
+    <textarea name="body"></textarea>
+    <input type="submit" value="Add Task" />
+</form>
+
+<div>
+    {% for task in tasks %}
+        <div>
+            <a href="{% url 'task' task.id %}">{{task.body}}</a>
+            <small>Updated {{task.updated|timesince}} ago</small>
+            <hr>
+        </div>
+    {% endfor %}
+</div>
